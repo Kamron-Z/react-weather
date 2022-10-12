@@ -1,0 +1,40 @@
+@import "../../styles/variables.scss";
+
+.header {
+  position: relative;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  cursor: pointer;
+  svg {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 25px;
+  color: $blue-color;
+}
+
+.change_theme {
+  cursor: pointer;
+  svg {
+    width: 35px;
+    height: 35px;
+  }
+}
+

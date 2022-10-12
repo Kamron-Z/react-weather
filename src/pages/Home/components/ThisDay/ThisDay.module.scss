@@ -1,34 +1,43 @@
-.header {
+@import "../../../../styles/variables.scss";
+
+.this__day {
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: $box-shadow;
+  background: var(#{--components-background-default});
+  border-radius: 20px;
+}
+
+.top__block {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.wrapper {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.logo {
+  width: 100%;
+  margin-bottom: 30px;
 
   svg {
-    width: 65px;
-    height: 65px;
+    width: 119px;
+    height: 119px;
+  }
+
+  .this__temp {
+    font-size: 96px;
+    color: $blue-color;
+    font-weight: 500;
+  }
+
+  .this_day_day {
+    font-size: 40px;
+    color: var(#{--cards-fontColor-default});
   }
 }
 
-.title {
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 25px;
-  color: #4793FF;
-}
-
-.change_theme {
-  svg {
-    width: 35px;
-    height: 35px;
+.bottom__block {
+  .this__time,
+  .this__city {
+    font-size: 25px;
+    color: $base-color;
   }
 }
 
