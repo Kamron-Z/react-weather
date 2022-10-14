@@ -1,6 +1,7 @@
 @import "../../../../styles/variables.scss";
 
 .this__day {
+  position: relative;
   padding: 20px;
   width: 100%;
   max-width: 400px;
@@ -16,11 +17,6 @@
   width: 100%;
   margin-bottom: 30px;
 
-  svg {
-    width: 119px;
-    height: 119px;
-  }
-
   .this__temp {
     font-size: 96px;
     color: $blue-color;
@@ -30,6 +26,16 @@
   .this_day_day {
     font-size: 40px;
     color: var(#{--cards-fontColor-default});
+  }
+
+  .this__day_img {
+    width: 119px;
+    height: 119px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 

@@ -1,15 +1,17 @@
 import {ReactNode, useState} from "react";
-import {ThemeContext} from "../context/ThemeContext";
+import {Theme, ThemeContext} from "../context/ThemeContext";
 import {changeCssRootVariables} from "../model/changeCssRootVariables";
+import {stoger} from "../model/stoger.";
 
 interface Props {
     children: ReactNode,
 }
 
 export const ThemeProvider = ({children, ...props}: Props) => {
-    const [theme, setTheme] = useState<string>('light');
-
-    const changeTheme = (theme: string) => {
+    const [theme, setTheme] = useState<Theme>(stoger.getItem('theme') || Theme.LIGHT);
+    changeCssRootVariables(theme)
+    const changeTheme = (theme: Theme) => {
+        stoger.setItem('theme', theme)
         setTheme(theme);
         changeCssRootVariables(theme)
     }

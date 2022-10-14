@@ -1,19 +1,24 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import Select from 'react-select'
 import s from './Header.module.scss'
 import {GlobalSvgSelect} from "../../assests/icons/global/GlobalSvgSelect";
 import {useTheme} from "../../hooks/useTheme";
+import {Theme} from "../../context/ThemeContext";
+import {useCustomDispatch} from "../../hooks/store";
+import {fetchCurrentWeather} from "../../store/thunks/fetchCurrentWeather";
 
 interface Props {
 }
 
 export const Header = (props: Props) => {
     const theme = useTheme()
+    const dispatch = useCustomDispatch()
 
     const options = [
-        {value: 'city-1', label: 'Samarkand'},
-        {value: 'city-2', label: 'Tashkent'},
-        {value: 'city-3', label: 'Buxoro'}
+        {value: 'samarkand', label: 'Samarkand'},
+        {value: 'tashkent', label: 'Tashkent'},
+        {value: 'tokyo', label: 'Tokyo'},
+        {value: 'moscow', label: 'Moscow'},
     ]
 
     const colourStyles = {
@@ -33,7 +38,11 @@ export const Header = (props: Props) => {
     }
 
     const changeTheme = () => {
-        theme.changeTheme(theme.theme === 'light' ? 'dark' : 'light')
+        theme.changeTheme(theme.theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT)
+    }
+
+    const changeCity = (e: any) => {
+        dispatch(fetchCurrentWeather(e.value))
     }
 
     return (
@@ -46,7 +55,10 @@ export const Header = (props: Props) => {
                 <div className={s.change_theme} onClick={changeTheme}>
                     <GlobalSvgSelect id='change-theme'/>
                 </div>
-                <Select defaultValue={options[0]} styles={colourStyles} options={options}/>
+                <Select defaultValue={options[0]}
+                        styles={colourStyles}
+                        options={options}
+                        onChange={ e => changeCity(e)}/>
             </div>
         </header>
     )

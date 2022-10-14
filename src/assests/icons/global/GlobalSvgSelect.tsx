@@ -256,7 +256,7 @@ export const GlobalSvgSelect = ({ id }: Props) => {
                     </defs>
                 </svg>
             );
-        case 'mainly_cloudy':
+        case '03d':
             return (
                 <svg
                     width="48"
@@ -323,7 +323,6 @@ export const GlobalSvgSelect = ({ id }: Props) => {
                     />
                 </svg>
             );
-
         default:
             return null;
     }
